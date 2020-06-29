@@ -1,5 +1,5 @@
 %%%Full path calculation of light propagation
-%%% An example
+%%%
 %%%%unit: um
 
 clear all;
@@ -30,7 +30,7 @@ g=A0.*exp(1i.*g);                                                           % 3-
 figure
 imshow(angle(g),[]);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% calculate the light after propagation d
-d=350e3;                                                                    % propagation distance
+d=600e3;                                                                    % propagation distance
 L=4*L0;                                                                     % desired dimension of imaging plane
 x1start=-L./2;                                                              % start positon x
 x1end=L./2;                                                                 % end position x
@@ -49,7 +49,7 @@ y1=linspace(y1start,y1end,my1);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% propagation through a lens
-f=350e3;                                                                    % lens focal lenght 600mm
+f=600e3;                                                                    % lens focal lenght 600mm
 g1=g1.*exp(-1i.*k./2./f.*(x1.^2+y1.^2));                                    % transmittance function 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%calculate the light after propagation d
 d=800e3;
@@ -71,10 +71,10 @@ y2=linspace(y2start,y2end,my2);
 % figure
 % imshow(angle(g1),[]);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%propagation through a lens
-f=450e3;                                                                    % lens focal length
+f=200e3;                                                                    % lens focal length
 g1=g1.*exp(-1i.*k./2./f.*(x2.^2+y2.^2));                                    % transmittance function
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%alculate the light after propagation d
-d=450e3+1.8e3;
+d=200e3+1.8e3;
 L=2*R;
 x3start=-L./2;
 x3end=L./2;
@@ -97,10 +97,10 @@ imshow(angle(g1),[]);
 M = 255;                                                                   % resolution of input plane
 my=255;                                                                     % desired resolution in the imaging plane
 mx=255;
-startx = -2*lamda;                                                          % start position x
-endx = 2*lamda;                                                             % end position x
-starty = -2*lamda;                                                          % start position y
-endy = 2*lamda;                                                             % end position y
+startx = -5*lamda;                                                          % start position x
+endx = 5*lamda;                                                             % end position x
+starty = -5*lamda;                                                          % start position y
+endy = 5*lamda;                                                             % end position y
 z = 0e0;                                                                    % position shift along the optical axis
 %%%%%%%%%%%%%%                                                              % polarization; corresponds to apodization functions, here Sine condition is used;
 % polar='x';
@@ -131,12 +131,12 @@ figure
 surfc(x./lamda,y./lamda,I./Imax), colormap hot, axis equal, view([180, -90]),shading interp
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                   % vector diffraction yz plane
-startz=-4*lamda;                                                            % start position z
-endz=4*lamda;                                                               % end position z
+startz=-40*lamda;                                                            % start position z
+endz=40*lamda;                                                               % end position z
 startx =0;
 endx = 0;
-starty = -2*lamda;                                                          % start position y
-endy = 2*lamda;                                                             % end position y
+starty = -20*lamda;                                                          % start position y
+endy = 20*lamda;                                                             % end position y
 mz=50;                                                                      % desired resolution z
 my=100;                                                                     % desired resolution y
 mx=1;
@@ -146,19 +146,18 @@ h=waitbar(0,'Caculating XZ plane...');
 index=0;
 loop=mz;
 for z=linspace(startz,endz,mz)
-
-[Ex Ey Ez] = Vector_Bluestein(E,M,polar,startx,endx,starty,endy,z,mx,my);
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Ix = abs(Ex).^2;
-Iy = abs(Ey).^2;
-Iz = abs(Ez).^2;
-I = Ix+Iy+Iz;
-index=index+1;
-waitbar(index./loop)
-II(:,index)=I(:,round((mx+1)/2));
+    [Ex Ey Ez] = Vector_Bluestein(E,M,polar,startx,endx,starty,endy,z,mx,my);
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Ix = abs(Ex).^2;
+    Iy = abs(Ey).^2;
+    Iz = abs(Ez).^2;
+    I = Ix+Iy+Iz;
+    index=index+1;
+    waitbar(index./loop)
+    II(:,index)=I(:,round((mx+1)/2));
 end
 close(h);
-toc
+
 IImax=max(max(II));
 
 z=linspace(startz,endz,mz);
