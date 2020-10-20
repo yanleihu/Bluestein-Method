@@ -16,8 +16,8 @@ g=ifft(ft);
 g=g(m:(m+mout-1),:).*wp(m:(m+mout-1),ones(1,n));
 
 l=linspace(0,mout-1,mout);l=l./mout.*(f2-f1)+f1;
-Mshifty=-m/2; 
-Mshift=repmat(exp(-1i.*2*pi.*l.*(Mshifty+1/2)/fs),[n 1]);
+Mshift=-m/2; 
+Mshift=repmat(exp(-1i.*2*pi.*l.*(Mshift+1/2)/fs),[n 1]);
 g=g.'.*Mshift;
 
 end
