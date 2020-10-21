@@ -1,5 +1,5 @@
-%Calculation of the intensity distribution using Debye theory.
-%unit£ºum
+%Calculation of the optical fields using Debye theory.
+%unitÂ£Âºum
 
 clc
 clear all
