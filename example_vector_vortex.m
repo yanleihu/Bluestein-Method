@@ -1,5 +1,5 @@
 %Calculation of the optical fields using Debye theory.
-%unit£ºum
+%unit: um
 
 clc
 clear all
