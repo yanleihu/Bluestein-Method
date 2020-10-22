@@ -99,7 +99,7 @@ index=0;
 loop=mz;
 for z=linspace(startz,endz,mz)
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- [Ex Ey Ez] = Vector_Bluestein(E,M,polar,startx,endx,starty,endy,z,mx,my); 
+ [Ex Ey Ez] = Vector_Bluestein(E,M,polar,0,0,starty,endy,z,mx,my); 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Ix = abs(Ex).^2;
 Iy = abs(Ey).^2;
