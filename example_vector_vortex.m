@@ -42,7 +42,7 @@ starty = -0.8e0;
 endy = 0.8e0;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 [Ex Ey Ez] = Vector_Bluestein(E,M,polar,startx,endx,starty,endy,z,mx,my); 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%% Caliberate Field Dimensions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Ix = abs(Ex).^2;
 Iy = abs(Ey).^2;
 Iz = abs(Ez).^2;
