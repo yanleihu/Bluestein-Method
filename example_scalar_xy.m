@@ -1,6 +1,5 @@
 %%%%%%Scalar calculation of the converging spherical wave
-%%%%%%The work is published by Light: Science and Applications, DOI:10.1038/s41377-020-00362-z;
-%%%%%%Please cite properly if you use the codes for any use
+%%%%%%Light: Science and Applications, DOI:10.1038/s41377-020-00362-z;
 %%%%%%unit: um
 
 clear all;
