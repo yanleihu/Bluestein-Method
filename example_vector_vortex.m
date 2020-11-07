@@ -14,7 +14,6 @@ N=(M-1)/2;
 lamda = 800e-3;
 NA = 1.4; 
 fo=F./Mo;
-R=fo.*NA;
 k = (2.*pi)./lamda;
 polar='rc';
 m=linspace(-M/2,M/2,M);
