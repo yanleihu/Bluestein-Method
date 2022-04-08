@@ -1,5 +1,4 @@
 function b=Bluestein_dft(x,f1,f2,fs,mout)
-
 [m,n]=size(x);
 f11=f1+(mout*fs+f2-f1)/(2*mout);
 f22=f2+(mout*fs+f2-f1)/(2*mout);
@@ -18,5 +17,4 @@ l=l./mout.*(f22-f11)+f11;
 Mshift=-m/2; 
 Mshift=repmat(exp(-1i.*2*pi.*l.*(Mshift+1/2)/fs),[n 1]);
 b=b.*Mshift;
-
 end
